@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.bindingdata.data.SimpleViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            app:imageResource="@{viewmodel.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/tvLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="315dp"
+            android:text="@{Integer.toString(viewmodel.likes)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/tvLikes"
+            android:background="@null"
+            android:backgroundTint="@color/black"
+            android:onClick="@{()->viewmodel.onLikes()}"
+            android:src="@drawable/ic_baseline_thumb_up_alt_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLikes"
+            app:layout_constraintStart_toEndOf="@+id/tvLikes"
+            app:layout_constraintTop_toTopOf="@+id/tvLikes" />
+
+        <TextView
+            android:id="@+id/tvComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="316dp"
+            android:text="@{Integer.toString(viewmodel.comment)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/tvLikes"
+            android:background="@null"
+            android:backgroundTint="@color/black"
+            android:onClick="@{()->viewmodel.onComment()}"
+            android:src="@drawable/ic_baseline_mode_comment_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tvComment"
+            app:layout_constraintStart_toEndOf="@+id/tvComment"
+            app:layout_constraintTop_toTopOf="@+id/tvComment"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <EditText
+            android:id="@+id/etComment"
+            android:layout_width="282dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="9dp"
+            android:hint="@{viewmodel.content}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="94dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="3dp"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="@+id/etComment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etComment"
+            android:onClick="Submit"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComment"
+            android:layout_width="394dp"
+            android:layout_height="202dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="9dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etComment" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
